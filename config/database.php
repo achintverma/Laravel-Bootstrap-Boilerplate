@@ -57,7 +57,7 @@ return [
 			'host'      => env('DB_HOST', 'localhost'),
 			'database'  => env('DB_DATABASE', 'wilita'),
 			'username'  => env('DB_USERNAME', 'wilita'),
-			'password'  => env('DB_PASSWORD', 'Letsdrink!23'),
+			'password'  => env('DB_PASSWORD', ''),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
