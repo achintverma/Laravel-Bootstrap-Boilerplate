@@ -11,6 +11,21 @@
 |
 */
 
+Route::post('learning', function(){
+
+	return $name = Request::input('name');;
+
+});
+
+
+Route::get("param/{id}",function($id){
+
+	return $id;
+
+});
+
+Route::get("create/{name?}","PagesController@create");
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');

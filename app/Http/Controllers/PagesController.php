@@ -24,5 +24,15 @@ class PagesController extends Controller {
 
 	}
 
+	public function create($name = 'Default'){
+
+		//return $fname." ".$lname;
+
+
+
+		return view('pages.create', ['name'=>$name]);
+
+	}
+
 
 }
