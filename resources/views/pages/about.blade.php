@@ -2,16 +2,30 @@
 	
 
 	@section('content')
-	<h1>About Page</h1>
+	<h1>All Drinks</h1>
+
+	<div class="container">
+
+		<table class="table table-bordered table-striped">
+    <?php foreach ($drinks as $drink): ?>
+
+    	<tr>
+    		<td><?php echo $drink->drink_name; ?></td>
+    		<td><?php echo $drink->glass; ?></td>
+    		<td><?php echo $drink->rating; ?></td>
+    		<td><?php echo $drink->total_votes; ?></td>
+    		
+    	</tr>
+
+    <?php endforeach; ?>
+    </table>
+    
+
+	</div>
+
+	<?php echo $drinks->render(); ?>
 
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-	<blockquote>{{$first}} {{$last}}</blockquote>
+	
 
 	@stop

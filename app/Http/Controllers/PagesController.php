@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Drink;
 
 class PagesController extends Controller {
 
@@ -11,10 +12,13 @@ class PagesController extends Controller {
 	public function about(){
 
 
+		$db = new Drink;
 
-		$data = array('first' => "Achint",
-						'last' => "Verma",
-						'page_title' => 'About Page');
+		$drinks = $db->getAllDrinks();
+
+		// var_dump($drinks);
+
+		$data = array('drinks' => $drinks, 'page_title' => "Cocktails");
 
 		return view('pages.about', $data);
 
