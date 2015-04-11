@@ -11,33 +11,12 @@
 |
 */
 
-Route::post('learning', function(){
+Route::get("create/{name?}",'PagesController@create')->where(['name'=>'[A-Za-z ]+']);
 
-	return $name = Request::input('name');;
+Route::get('/', 'PagesController@index');
 
-});
+Route::get('search','DrinksController@search');
 
-
-Route::get("param/{id}",function($id){
-
-	return $id;
-
-});
-
-Route::get("create/{name?}","PagesController@create");
-
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
-
-Route::get('about', 'PagesController@about');
-
-
-Route::get('foo/{id}', function($id){
-
-	return("Hello, ".$id);
-
-})->where('id','[a-z0-9]+');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

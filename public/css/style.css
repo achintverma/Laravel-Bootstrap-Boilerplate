@@ -1,0 +1,68 @@
+#header{
+
+	background-color: #72cf01;
+	min-height: 92px;
+
+}
+
+
+.wilita-nav {
+
+	width:500px;
+	margin-bottom: 0;
+}
+
+.wilita-nav > li {
+
+	list-style: none;
+	display: block;
+
+}
+
+
+.wilita-nav > li > a{
+
+	list-style: none;
+	color:white;
+	height:92px;
+	background-color: none;
+	width: 100px;
+	float: right;
+	text-align: center;
+	margin-right: 1px;
+	line-height: 92px;
+	text-decoration: none;
+}
+
+.wilita-nav > li > a:hover{
+
+	background-color: white;
+
+	text-decoration: none;
+	color:gray;
+}
+
+.search-sidebar{
+
+	background-color: #eee;
+	min-height: 600px;
+}
+
+.drink-box{
+
+	text-align: center;
+	margin-top: 30px;
+	height:300px;
+
+}
+
+.drink-box img{
+
+	width:100%;
+}
+
+.drink-box h3{
+
+	font-size: 18px;
+	color:#72cf01;
+}

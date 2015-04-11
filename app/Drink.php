@@ -12,9 +12,9 @@ class Drink extends Model {
 
      public function getAllDrinks(){
 
-     	$users = Drink::paginate(20);
+     	$drinks = Drink::paginate(20);
 
-     	return $users;
+     	return $drinks;
      }
 
 

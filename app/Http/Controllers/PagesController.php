@@ -2,14 +2,14 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use App\Drink;
+use Illuminate\Contracts\View\Factory;
 
 class PagesController extends Controller {
 
 	//
-	public function about(){
+	public function index(){
 
 
 		$db = new Drink;
@@ -26,11 +26,21 @@ class PagesController extends Controller {
 
 	public function create($name = 'Default'){
 
-		//return $fname." ".$lname;
-
-
-
+		view()->share('page_title', 'User Form');
+		
 		return view('pages.create', ['name'=>$name]);
+			
+
+	}
+
+	public function search(){
+		
+
+		$data = [];		
+		$data['page_title'] = "Search Page";
+ 
+		return view('pages.search',$data);
+			
 
 	}
 
