@@ -15,7 +15,7 @@ Route::get("create/{name?}",'PagesController@create')->where(['name'=>'[A-Za-z ]
 
 Route::get('/', 'PagesController@index');
 
-Route::get('search','DrinksController@search');
+Route::get('search/{id?}','DrinksController@search');
 
 
 Route::controllers([

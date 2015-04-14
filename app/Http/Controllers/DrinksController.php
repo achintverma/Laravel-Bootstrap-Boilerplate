@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\Factory;
 class DrinksController extends Controller {
 
 	
-	public function search(){
+	public function search($id = 1){
 		
 		$drinker = new Drink;
 
