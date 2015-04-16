@@ -9,7 +9,7 @@ class Ingredient extends Model {
 
 	public function drinks(){
 
-		$this->belongsToMany("App\Drink", "drink_ingredients", "drink_id", "ingredient_id");
+		return $this->belongsToMany("App\Drink", "drink_ingredients", "drink_id", "ingredient_id");
 
 	}
 

@@ -18,5 +18,12 @@ class Drink extends Model {
      }
 
 
+	public function ingredients(){
+
+		return $this->belongsToMany("App\Ingredient", "drink_ingredients", "drink_id", "ingredient_id");
+
+
+	}
+
 
 }
