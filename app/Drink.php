@@ -10,20 +10,26 @@ class Drink extends Model {
 	
 	protected $fillable = ['drink_name']; 
 
-     public function getAllDrinks(){
+    /* Get list of all drinks
+     * return Drinks[] 
+	 */
+
+    public function getAllDrinks(){
 
      	$drinks = Drink::paginate(20);
-
      	return $drinks;
      }
 
 
+
+
+    // Create relationship between ingredients  
 	public function ingredients(){
 
-		return $this->belongsToMany("App\Ingredient", "drink_ingredients", "drink_id", "ingredient_id");
-
+		return $this->belongsToMany("App\Ingredient", "drink_ingredients", "drink_id", "ingredient_id")->withPivot("qty");
 
 	}
+
 
 
 }
