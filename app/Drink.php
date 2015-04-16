@@ -7,7 +7,7 @@ class Drink extends Model {
 
 	// specify a table name since it can be differnt from the model convention
 	protected $table = "drinks";
-
+	
 	protected $fillable = ['drink_name']; 
 
      public function getAllDrinks(){
