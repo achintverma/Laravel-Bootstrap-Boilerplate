@@ -28,7 +28,7 @@
 						</div>
 
 						<h3><?php echo $drink->drink_name; ?></h3>
-						<!-- <p><?php echo substr($drink->description, 0, 100); ?> <?php if(strlen($drink->description) > 100) echo "...";?> </p> -->
+						<p><?php echo substr($drink->description, 0, 100); ?> <?php if(strlen($drink->description) > 100) echo "...";?> </p>
 
 						<span class="label label-small label-success">Orange Juice</span> 
 						<span class="label label-small label-success">Gin</span>
