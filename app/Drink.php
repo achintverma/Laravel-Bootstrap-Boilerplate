@@ -21,8 +21,6 @@ class Drink extends Model {
      }
 
 
-
-
     // Create relationship between ingredients  
 	public function ingredients(){
 
