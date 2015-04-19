@@ -25,5 +25,19 @@ class DrinksController extends Controller {
 
 	}
 
+	public function getDrink($slug){
+
+		$obj = new Drink;
+
+		$drink = $obj->getDrinkBySlug($slug);
+
+		$data = [];		
+		$data['page_title'] = $drink->drink_name;
+		$data['drink'] = $drink;
+
+		return view('pages.single_drink',$data);
+
+	}
+
 
 }
