@@ -21,6 +21,21 @@ class Drink extends Model {
      }
 
 
+    /*
+    	Get Drink by slug (SEO frindly text URL)
+
+    	@param string slug
+    	@return App\Drink
+
+    */ 
+    public function getDrinkBySlug($slug){
+
+    	$drinks =  Drink::where('slug','=',$slug)->take(1)->get();
+
+    	return $drinks[0];
+
+    }	
+
     // Create relationship between ingredients  
 	public function ingredients(){
 

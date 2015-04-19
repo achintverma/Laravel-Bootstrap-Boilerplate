@@ -18,6 +18,8 @@ Route::get('/', 'PagesController@index');
 Route::get('search/{id?}','DrinksController@search');
 
 
+Route::get('drink/{slug}','DrinksController@getDrink')->where(['slug'=>'[a-z-]+']);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
