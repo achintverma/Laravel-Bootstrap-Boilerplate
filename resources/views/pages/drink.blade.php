@@ -17,11 +17,11 @@
 
 			<div class="row">
 
-				<h3>Rating</h3>
+				<h4>Rating</h4>
 
 				<p><?php echo $drink->rating;?> rated by <?php echo $drink->total_votes;?> Cocktail lovers</p>
 
-				<h3>Ingredients</h3>
+				<h4>Ingredients</h4>
 				<table class="table table-striped">
 
 				<?php foreach($drink->ingredients as $ingredient){?>	
@@ -33,7 +33,7 @@
 				?>
 				</table>
 
-				<h3>Cocktail Preparation Instructions</h3>
+				<h4>Cocktail Preparation Instructions</h4>
 				<p><?php echo $drink->description;?></p>
 			</div>
 
