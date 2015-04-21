@@ -34,7 +34,7 @@ class DrinksController extends Controller {
 		$data = [];		
 		$data['page_title'] = $drink->drink_name;
 		$data['drink'] = $drink;
-
+ 
 		return view('pages.drink',$data);
 
 	}

@@ -15,8 +15,13 @@ Route::get("create/{name?}",'PagesController@create')->where(['name'=>'[A-Za-z ]
 
 Route::get('/', 'PagesController@index');
 
-Route::get('search/{id?}','DrinksController@search');
+Route::get('search/{id?}',['middleware'=>'auth', 'uses'=>'DrinksController@search']);
 
+
+Route::get('secure',['middleware'=>'auth', function(){ return "this is secure area";}]);
+
+
+Route::get('register',"PagesController@register");
 
 Route::get('drink/{slug}','DrinksController@getDrink')->where(['slug'=>'[a-z-]+']);
 
@@ -24,3 +29,10 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('logout',function(){
+
+	Auth::logout();
+	redirect('/');
+
+});
