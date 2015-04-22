@@ -14,6 +14,25 @@ class Drink extends Model {
      * return Drinks[] 
 	 */
 
+    // Create relationship between ingredients  
+    public function ingredients(){
+
+        return $this->belongsToMany("App\Ingredient", "drink_ingredients", "drink_id", "ingredient_id")->withPivot("qty");
+
+    }
+
+    /*
+    *   Get a lisk of unique glasses   
+    *
+    *
+    */
+    public function getUniqueGlasses(){
+
+        return $glasses = Drink::distinct('glass')->get();
+
+    }
+
+
     public function getAllDrinks(){
 
      	$drinks = Drink::paginate(20);
@@ -28,7 +47,7 @@ class Drink extends Model {
     	@return App\Drink
 
     */
-     
+
     public function getDrinkBySlug($slug){
 
     	$drinks =  Drink::where('slug','=',$slug)->take(1)->get();
@@ -37,13 +56,7 @@ class Drink extends Model {
 
     }	
 
-    // Create relationship between ingredients  
-	public function ingredients(){
-
-		return $this->belongsToMany("App\Ingredient", "drink_ingredients", "drink_id", "ingredient_id")->withPivot("qty");
-
-	}
-
+    
 
 
 }

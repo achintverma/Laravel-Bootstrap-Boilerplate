@@ -12,7 +12,12 @@
 */
 
 
-Route::get('/', 'PagesController@index');
+// admin routes 
+Route::get('admin/', 'AdminController@index');
+Route::get('admin/drink/add', 'AdminController@addDrink');
+Route::get('admin/drink/{id}', 'AdminController@getDrinkDetail');
+Route::get('admin/drink/{id}/edit', 'AdminController@editDrink');
+
 
 Route::get('search/{id?}','DrinksController@search');
 

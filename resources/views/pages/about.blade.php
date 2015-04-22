@@ -7,7 +7,7 @@
 	<div class="container">
 
     <div class="row">
-
+        <br/>
         <div class="col-md-8">
 
             <ul class="nav nav-pills" role="tablist">
@@ -22,10 +22,10 @@
         </div>
 
     </div>    
-
+    <br/>
     <div class="row">
 
-		<table class="table table-bordered table-striped">
+		<table class="table table-striped">
         
         <tr>
             <th>Drink Name</th>
@@ -49,8 +49,8 @@
     		<td><?php echo $drink->votes; ?></td>
             <td><?php if(strtotime($drink->updated_at) != -62169984000) echo date("D m, Y", strtotime($drink->updated_at)); else echo "Never Updated";?></td>
     		<td> 
-                <a href="" class="btn btn-default">Edit</a>
-                <a href="" class="btn btn-default">Delete</a>
+                <a href="" class="btn btn-default btn-xs">Edit</a>
+                <a href="" class="btn btn-default btn-xs">Delete</a>
             </td>
     	</tr>
         <?php endforeach; ?>

@@ -4,6 +4,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 	{!! HTML::style('css/style.css') !!}
+	{!! HTML::style('css/admin-style.css') !!}
 
 	@yield('headercss')
 	@yield('headerjs')
@@ -21,7 +22,7 @@
 
 	</div>
 
-	@include('includes.footer')
+	@include('includes.admin.footer')
 	@yield('footerjs')
 </body>
 </html> 
