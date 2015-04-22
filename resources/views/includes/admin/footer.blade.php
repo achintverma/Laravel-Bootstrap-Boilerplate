@@ -1,3 +1,3 @@
 <div id="footer">
-		&copy; 2015. All Rights Reserved.
+		&copy; 2015. Wilita App, Inc. All Rights Reserved.
 </div>

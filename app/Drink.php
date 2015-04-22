@@ -28,7 +28,7 @@ class Drink extends Model {
     */
     public function getUniqueGlasses(){
 
-        return $glasses = Drink::distinct('glass')->get();
+        return $glasses = Drink::distinct()->get(array('glass'));
 
     }
 

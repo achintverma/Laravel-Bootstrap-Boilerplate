@@ -8,43 +8,33 @@ use Illuminate\Contracts\View\Factory;
 
 class AdminController extends Controller {
 
-	//
+	/*
+	*	Show the list of all drinks 
+	*/
+
 	public function index(){
 
-
-		$db = new Drink;
-
+		$db 	= new Drink;
 		$drinks = $db->getAllDrinks();
-
-		// var_dump($drinks);
-
-		$data = array('drinks' => $drinks, 'page_title' => "Cocktails");
+		$data 	= array('drinks' => $drinks, 'page_title' => "Cocktails");
 
 		return view('pages.about', $data);
-
 	}
 
-
 	/*
-	*  Add a new Cocktail 
-	*   	
-	*
+	*  Show a page to add a new cocktail
 	*/
 
 	public function addDrink(){
 
 		$dr = new Drink;
 
-
 		$data = [];
 		//$data['ingredients'] = 
 		$data['page_title'] = "Add a cocktail";
 		$data['glasses'] = $dr->getUniqueGlasses();
 
-
 		return view('admin.add_drink', $data);
-
-
 	}
 
 	public function createDrink(){
