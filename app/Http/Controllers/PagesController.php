@@ -24,25 +24,6 @@ class PagesController extends Controller {
 
 	}
 
-	public function create($name = 'Default'){
-
-		view()->share('page_title', 'User Form');
-		
-		return view('pages.create', ['name'=>$name]);
-			
-
-	}
-
-	public function search(){
-		
-
-		$data = [];		
-		$data['page_title'] = "Search Page";
- 
-		return view('pages.search',$data);
-			
-
-	}
 
 	public function register(){
 		return view('auth.register');

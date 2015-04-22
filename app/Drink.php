@@ -27,7 +27,8 @@ class Drink extends Model {
     	@param string slug
     	@return App\Drink
 
-    */ 
+    */
+     
     public function getDrinkBySlug($slug){
 
     	$drinks =  Drink::where('slug','=',$slug)->take(1)->get();

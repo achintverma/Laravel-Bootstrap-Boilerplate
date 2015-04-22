@@ -11,12 +11,10 @@
 |
 */
 
-Route::get("create/{name?}",'PagesController@create')->where(['name'=>'[A-Za-z ]+']);
 
 Route::get('/', 'PagesController@index');
 
 Route::get('search/{id?}','DrinksController@search');
-
 
 Route::get('register',"PagesController@register");
 
