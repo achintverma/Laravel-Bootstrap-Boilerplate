@@ -2,9 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Drink;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Support\Facades\Request;
+
 
 class AdminController extends Controller {
 
@@ -36,6 +37,10 @@ class AdminController extends Controller {
 
 		return view('admin.add_drink', $data);
 	}
+		
+	/*
+	*  Save the drink added through the backend
+	*/	
 
 	public function createDrink(){
 
@@ -43,7 +48,7 @@ class AdminController extends Controller {
 
 		$dr->drink_name 	= Request::input('drink_name');
 		$dr->glass      	= Request::input('glass');
-		$dr->is_top_drink 	= Request::input('top_drink');
+		//$dr->is_top_drink 	= Request::input('top_drink');
 
 		$dr->save();
 

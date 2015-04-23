@@ -14,7 +14,10 @@
 
 // admin routes 
 Route::get('admin/', 'AdminController@index');
-Route::get('admin/drink/add', 'AdminController@addDrink');
+Route::get('admin/drink/new', 'AdminController@addDrink');
+
+Route::post('admin/drink/add', 'AdminController@createDrink');
+
 Route::get('admin/drink/{id}', 'AdminController@getDrinkDetail');
 Route::get('admin/drink/{id}/edit', 'AdminController@editDrink');
 

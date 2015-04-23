@@ -33,3 +33,20 @@ body{
 	min-height: 60px;
 	text-align: center;
 }
+
+.same-line{
+
+	float: left;
+	margin-right: 5px;
+	
+}
+
+.sm-field{ width:80px;}
+.md-field{ width:250px;}
+.xs-field{ width:40px;}
+
+.ingredient-subform{
+	margin-bottom: 5px;
+	clear: both;
+}
+

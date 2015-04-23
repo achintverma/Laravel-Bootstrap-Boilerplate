@@ -6,8 +6,10 @@
 	{!! HTML::style('css/style.css') !!}
 	{!! HTML::style('css/admin-style.css') !!}
 
-	@yield('headercss')
-	@yield('headerjs')
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
+	@yield('extraheader')
 
 </head>
 <body>
