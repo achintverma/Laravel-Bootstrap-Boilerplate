@@ -16,9 +16,9 @@ class DrinksController extends Controller {
 		$allDrinks = $drinker->getAllDrinks();
 
 
-		$data = [];		
+		$data 				= [];		
 		$data['page_title'] = "Search Page";
-		$data['drinks'] = $allDrinks;
+		$data['drinks'] 	= $allDrinks;
  
 		return view('pages.search',$data);
 			

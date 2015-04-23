@@ -20,6 +20,7 @@ Route::post('admin/drink/add', 'AdminController@createDrink');
 
 Route::get('admin/drink/{id}', 'AdminController@getDrinkDetail');
 Route::get('admin/drink/{id}/edit', 'AdminController@editDrink');
+Route::get('get-ingredients/{name}', 'AdminController@getIngredientsAjax');
 
 
 Route::get('search/{id?}','DrinksController@search');

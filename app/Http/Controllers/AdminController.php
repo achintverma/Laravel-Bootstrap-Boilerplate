@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Drink;
+use App\Ingredient;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Request;
 
@@ -54,6 +55,12 @@ class AdminController extends Controller {
 
 	}
 
+
+	public function getIngredientsAjax($name){
+
+		$ingr = new 
+
+	}
 
 	public function register(){
 		return view('auth.register');

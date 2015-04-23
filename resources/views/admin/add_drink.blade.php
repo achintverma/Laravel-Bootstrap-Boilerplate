@@ -20,7 +20,7 @@
 					<div class="form-group"> 
 						<label class="col-sm-3 control-label">Drink Name</label>
 						<div class="col-sm-6">
-							<input type="text" id="autocomplete" class="form-control" name="drink_name">
+							<input type="text" class="form-control" name="drink_name">
 						</div>
 						<div class="col-sm-3"></div>
 					</div>
@@ -64,17 +64,34 @@
 						<div class="col-sm-9">
 								
 								<div id="ingredients-box">
-								<div class="row ingredient-subform">
+								<?php 
+
+								$max_ingredients = 10; 
+								$default_count   = 5;
+
+
+								for($i=1;$i<=$max_ingredients;$i++){
+
+									if($i <= $default_count)
+										$class = "show-ingr";
+									else
+										$class = "hide-ingr";
+
+								 ?>	
+								<div class="row ingredient-subform <?php echo $class;?>" id="ingredient-<?php echo $i;?>">
 									<div class="col-sm-12">
-										<input name="qty-0" class="form-control same-line sm-field" placeholder="2 oz">
-										<input name="ingr-0" class="form-control same-line md-field" placeholder="White Tequila">
-										<input class="btn btn-default same-line xs-field" value="+" onclick="addIngredientRow();">
+										<input name="qty-<?php echo $i;?>" class="form-control same-line sm-field" placeholder="2 oz">
+										<input name="ingr-<?php echo $i;?>" class="form-control same-line md-field ingredient-marker" placeholder="White Tequila">
+										<input name="ingr-id-<?php echo $i;?>" type="hidden">
 									</div>
 								</div>
+								<?php 
+								}
+								?>
 								</div>
-								
 
-
+								<input class="btn btn-success" value="Add More Ingredients" onclick="addIngredientRow();">
+						
 						</div>
 						
 					</div>
@@ -107,39 +124,13 @@
 @section('footerjs')
 <script type="text/javascript">
 
-var total_rows = 0;
-	
-function addIngredientRow()	
-{	
+var total_rows = <?php echo $default_count; ?>;
 
-	total_rows++;
-	var form_row = '<div class="row ingredient-subform">\
-									<div class="col-sm-12">\
-										<input name="qty-'+total_rows+'" class="form-control same-line sm-field" placeholder="2 oz">\
-										<input name="ingr-'+total_rows+'" class="form-control same-line md-field" placeholder="White Tequila">\
-										<input class="btn btn-default same-line xs-field" value="+" onclick="addIngredientRow();">\
-									</div>\
-								</div>';
-
-	document.getElementById('ingredients-box').innerHTML += form_row;							
-
-}
+$(document).ready(function(){
 
 
-</script>	
-@stop
-
-@section('extraheader')
-<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/eggplant/jquery-ui.css">
-<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-
-<script>
-		/*
-		 * jQuery UI Autocomplete: Load Data via AJAX
-		 * http://salman-w.blogspot.com/2013/12/jquery-ui-autocomplete-examples.html
-		 */
-		$(function() {
-			$("#autocomplete").autocomplete({
+	$('.ingredient-marker').bind("focus", function(){
+		$(this).autocomplete({
 				delay: 500,
 				minLength: 3,
 				source: function(request, response) {
@@ -170,7 +161,73 @@ function addIngredientRow()
 					window.open(ui.item.url);
 				}
 			});
-		});
+
+
+
+		console.log("ID Attached");
+	});
+
+	$('.ingredient-marker').bind("blur", function(){
+		$(this).attr("id","");
+	});
+
+
+});
+
+	
+function addIngredientRow()	
+{	
+	total_rows++;
+	$("#ingredient-"+total_rows).show();
+	
+}
+
+
+</script>	
+@stop
+
+@section('extraheader')
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/eggplant/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+		/*
+		 * jQuery UI Autocomplete: Load Data via AJAX
+		 * http://salman-w.blogspot.com/2013/12/jquery-ui-autocomplete-examples.html
+		 */
+		// $(function() {
+		// 	$("#autocomplete").autocomplete({
+		// 		delay: 500,
+		// 		minLength: 3,
+		// 		source: function(request, response) {
+		// 			$.getJSON("http://api.rottentomatoes.com/api/public/v1.0/movies.json?callback=?", {
+		// 				// do not copy the api key; get your own at developer.rottentomatoes.com
+		// 				apikey: "6czx2pst57j3g47cvq9erte5",
+		// 				q: request.term,
+		// 				page_limit: 10
+		// 			}, function(data) {
+		// 				// data is an array of objects and must be transformed for autocomplete to use
+		// 				var array = data.error ? [] : $.map(data.movies, function(m) {
+		// 					return {
+		// 						label: m.title + " (" + m.year + ")",
+		// 						url: m.links.alternate
+		// 					};
+		// 				});
+		// 				response(array);
+		// 			});
+		// 		},
+		// 		focus: function(event, ui) {
+		// 			// prevent autocomplete from updating the textbox
+		// 			event.preventDefault();
+		// 		},
+		// 		select: function(event, ui) {
+		// 			// prevent autocomplete from updating the textbox
+		// 			event.preventDefault();
+		// 			// navigate to the selected item's url
+		// 			window.open(ui.item.url);
+		// 		}
+		// 	});
+		// });
 	</script>
 
 
