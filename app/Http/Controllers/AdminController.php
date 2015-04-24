@@ -58,7 +58,17 @@ class AdminController extends Controller {
 
 	public function getIngredientsAjax($name){
 
-		$ingr = new 
+		$ingr = new Ingredient;
+		$ingredients = $ingr->getIngredientByName($name);
+
+		$json_array = [];
+
+		foreach ($ingredients as $ingredient) {
+			
+			$json_array[$ingredient->id] = $ingredient->ingredient;
+		}
+
+		return response()->json($json_array);
 
 	}
 

@@ -82,7 +82,7 @@
 									<div class="col-sm-12">
 										<input name="qty-<?php echo $i;?>" class="form-control same-line sm-field" placeholder="2 oz">
 										<input name="ingr-<?php echo $i;?>" class="form-control same-line md-field ingredient-marker" placeholder="White Tequila">
-										<input name="ingr-id-<?php echo $i;?>" type="hidden">
+										<input name="ingr-id-<?php echo $i;?>" data-id="<?php echo $i;?>" type="text" id="ingr-id-<?php echo $i;?>">
 									</div>
 								</div>
 								<?php 
@@ -125,28 +125,41 @@
 <script type="text/javascript">
 
 var total_rows = <?php echo $default_count; ?>;
+var current_ingr_selector;
 
 $(document).ready(function(){
 
 
 	$('.ingredient-marker').bind("focus", function(){
+
+
+		// update the selector 
+
+		var sel = $(this).attr("name").split("-")[1];
+		
+		
+
 		$(this).autocomplete({
 				delay: 500,
 				minLength: 3,
 				source: function(request, response) {
-					$.getJSON("http://api.rottentomatoes.com/api/public/v1.0/movies.json?callback=?", {
+					$.getJSON("http://localhost:8000/get-ingredients/"+request.term, {
 						// do not copy the api key; get your own at developer.rottentomatoes.com
-						apikey: "6czx2pst57j3g47cvq9erte5",
 						q: request.term,
 						page_limit: 10
 					}, function(data) {
+						
+						//alert(data);	
+
 						// data is an array of objects and must be transformed for autocomplete to use
-						var array = data.error ? [] : $.map(data.movies, function(m) {
+						 var array = data.error ? [] : $.map(data, function(val, key) {
 							return {
-								label: m.title + " (" + m.year + ")",
-								url: m.links.alternate
+								label: val,
+								ingr_id: key
 							};
 						});
+						//alert(array) 
+						
 						response(array);
 					});
 				},
@@ -156,15 +169,17 @@ $(document).ready(function(){
 				},
 				select: function(event, ui) {
 					// prevent autocomplete from updating the textbox
-					event.preventDefault();
+					//event.preventDefault();
 					// navigate to the selected item's url
-					window.open(ui.item.url);
+					//window.open(ui.item.url);
+					//alert(ui.item.ingr_id);
+
+					$("#ingr-id-"+sel).attr("value", ui.item.ingr_id);
+
 				}
 			});
 
 
-
-		console.log("ID Attached");
 	});
 
 	$('.ingredient-marker').bind("blur", function(){
@@ -179,9 +194,8 @@ function addIngredientRow()
 {	
 	total_rows++;
 	$("#ingredient-"+total_rows).show();
-	
-}
 
+}
 
 </script>	
 @stop

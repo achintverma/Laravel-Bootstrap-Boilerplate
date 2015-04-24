@@ -13,4 +13,11 @@ class Ingredient extends Model {
 
 	}
 
+	public function getIngredientByName($name){
+
+		return Ingredient::where('ingredient','LIKE','%'.$name.'%')->take(10)->get(['id','ingredient']);
+
+	}
+
+
 }
