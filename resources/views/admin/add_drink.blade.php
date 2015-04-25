@@ -46,7 +46,7 @@
 					<div class="form-group"> 
 						<label class="col-sm-3 control-label">Top Drink?</label>
 						<div class="col-sm-6">
-							<input type="checkbox" value="1"> Please check if to make it a top drink.
+							<input type="checkbox" value="1" name="top_drink"> Please check if to make it a top drink.
 						</div>
 						<div class="col-sm-3"></div>
 					</div>
@@ -54,7 +54,7 @@
 					<div class="form-group"> 
 						<label class="col-sm-3 control-label">Excerpt</label>
 						<div class="col-sm-9">
-							<textarea rows="4" cols="20" class="form-control"></textarea>
+							<textarea rows="4" cols="20" class="form-control" name="excerpt"></textarea>
 						</div>
 						
 					</div>
@@ -96,20 +96,18 @@
 						
 					</div>
 
-
 					<div class="form-group"> 
 						<label class="col-sm-3 control-label">Mixing Instructions</label>
 						<div class="col-sm-9">
 							<textarea rows="4" cols="20" class="form-control" name="instructions"></textarea>
 						</div>
-						
 					</div>
+
 					<div class="form-group"> 
 						<label class="col-sm-3 control-label"></label>
 						<div class="col-sm-9">
 							<input type="submit" value="Save Drink" class="btn btn-lg btn-success">
 						</div>
-						
 					</div>
 
 				</form>

@@ -46,13 +46,15 @@ class AdminController extends Controller {
 	public function createDrink(){
 
 
-		print_r($_POST);
+		//print_r($_POST);
 
 		 $dr = new Drink;
 
 		 $dr->drink_name 	= Request::input('drink_name');
 		 $dr->glass      	= Request::input('glass');
-		 //$dr->is_top_drink 	= Request::input('top_drink');	
+		 $dr->is_top_drink 	= Request::input('top_drink');	
+		 $dr->excerpt 		= Request::input('excerpt');
+		 $dr->description 	= Request::input('instructions');	
 
 		 $ingr_data = array();
 
