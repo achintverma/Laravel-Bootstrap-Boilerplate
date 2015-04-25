@@ -51,10 +51,19 @@ class Drink extends Model {
     public function getDrinkBySlug($slug){
 
     	$drinks =  Drink::where('slug','=',$slug)->take(1)->get();
-
-    	return $drinks[0];
+        return $drinks[0];
 
     }	
+
+    public function deleteDrink($id){
+
+        $drink = Drink::find($id);
+        $id = $drink->id;
+
+        $drink->delete();
+        return $id;
+
+    }
 
     
 
