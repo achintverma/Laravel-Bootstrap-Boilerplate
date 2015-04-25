@@ -45,13 +45,31 @@ class AdminController extends Controller {
 
 	public function createDrink(){
 
-		$dr = new Drink;
 
-		$dr->drink_name 	= Request::input('drink_name');
-		$dr->glass      	= Request::input('glass');
-		//$dr->is_top_drink 	= Request::input('top_drink');
+		print_r($_POST);
 
-		$dr->save();
+		 $dr = new Drink;
+
+		 $dr->drink_name 	= Request::input('drink_name');
+		 $dr->glass      	= Request::input('glass');
+		 //$dr->is_top_drink 	= Request::input('top_drink');	
+
+		 $ingr_data = array();
+
+		 for($i=1;$i<=10;$i++)
+		 {
+		 	if(Request::input('ingr-id-'.$i) != "")
+		 		$ingr_data[Request::input('ingr-id-'.$i)] = array("qty"=>Request::input('qty-'.$i));
+
+		 }
+		 
+		 // Save the drink
+		 $dr->save();
+		 
+		 // save the ingredients associated with the drink
+		 $dr->ingredients()->attach($ingr_data);
+
+		 
 
 	}
 

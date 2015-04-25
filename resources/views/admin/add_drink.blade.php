@@ -46,7 +46,7 @@
 					<div class="form-group"> 
 						<label class="col-sm-3 control-label">Top Drink?</label>
 						<div class="col-sm-6">
-							<input type="checkbox" value="yes"> Please check if to make it a top drink.
+							<input type="checkbox" value="1"> Please check if to make it a top drink.
 						</div>
 						<div class="col-sm-3"></div>
 					</div>
@@ -82,7 +82,7 @@
 									<div class="col-sm-12">
 										<input name="qty-<?php echo $i;?>" class="form-control same-line sm-field" placeholder="2 oz">
 										<input name="ingr-<?php echo $i;?>" class="form-control same-line md-field ingredient-marker" placeholder="White Tequila">
-										<input name="ingr-id-<?php echo $i;?>" data-id="<?php echo $i;?>" type="text" id="ingr-id-<?php echo $i;?>">
+										<input name="ingr-id-<?php echo $i;?>" data-id="<?php echo $i;?>" type="hidden" id="ingr-id-<?php echo $i;?>">
 									</div>
 								</div>
 								<?php 
@@ -100,7 +100,7 @@
 					<div class="form-group"> 
 						<label class="col-sm-3 control-label">Mixing Instructions</label>
 						<div class="col-sm-9">
-							<textarea rows="4" cols="20" class="form-control"></textarea>
+							<textarea rows="4" cols="20" class="form-control" name="instructions"></textarea>
 						</div>
 						
 					</div>
@@ -140,7 +140,7 @@ $(document).ready(function(){
 		
 
 		$(this).autocomplete({
-				delay: 500,
+				delay: 100,
 				minLength: 3,
 				source: function(request, response) {
 					$.getJSON("http://localhost:8000/get-ingredients/"+request.term, {

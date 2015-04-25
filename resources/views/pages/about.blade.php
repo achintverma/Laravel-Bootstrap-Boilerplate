@@ -61,8 +61,6 @@
         
 	</div>
 
-    
-
 
 	<?php echo $drinks->render(); ?>
 
