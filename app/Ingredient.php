@@ -19,5 +19,17 @@ class Ingredient extends Model {
 
 	}
 
+	public function deleteIngredint($id){
+
+		$in = Ingredient::find($id);
+
+		$ingredient_id = $in->id;
+
+		$in->delete();
+
+		return $ingredient_id;
+
+	}
+
 
 }
