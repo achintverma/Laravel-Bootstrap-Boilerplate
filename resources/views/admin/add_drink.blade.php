@@ -18,6 +18,15 @@
 					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 
 					<div class="form-group"> 
+						<label class="col-sm-3 control-label">Upload File</label>
+						<div class="col-sm-6">
+							<input type="file" class="form-control" name="drink_file">
+						</div>
+						<div class="col-sm-3"></div>
+					</div>
+
+
+					<div class="form-group"> 
 						<label class="col-sm-3 control-label">Drink Name</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" name="drink_name">

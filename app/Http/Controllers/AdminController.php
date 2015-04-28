@@ -65,6 +65,24 @@ class AdminController extends Controller {
 
 		 }
 		 
+
+		 $filename = "";
+
+		 // save the file on server 
+		 if (Request::hasFile('drink_file')) // if the file is uploaded
+		 {
+		 	$file = Request::file("drink_file");
+
+		 	$filename = $file->getClientOriginalName()."-".time().$file->getClientOriginalExtension();
+		 	$savepath = "uploads";
+
+		 	$file->move($savepath, $filename);
+
+		 }
+
+
+		 
+		 
 		 // Save the drink
 		 $dr->save();
 		 
