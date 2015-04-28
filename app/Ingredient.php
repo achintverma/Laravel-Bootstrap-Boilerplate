@@ -19,6 +19,11 @@ class Ingredient extends Model {
 
 	}
 
+
+	/*
+	* Function to delete ingredient
+	**/
+
 	public function deleteIngredint($id){
 
 		$in = Ingredient::find($id);
