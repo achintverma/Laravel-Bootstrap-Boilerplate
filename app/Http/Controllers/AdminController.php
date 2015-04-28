@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Drink;
 use App\Ingredient;
+use App\DrinkPhoto;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Request;
 
@@ -65,6 +66,8 @@ class AdminController extends Controller {
 
 		 }
 		 
+		// Save the drink
+		 $dr->save();
 
 		 $filename = "";
 
@@ -73,18 +76,23 @@ class AdminController extends Controller {
 		 {
 		 	$file = Request::file("drink_file");
 
-		 	$filename = $file->getClientOriginalName()."-".time().$file->getClientOriginalExtension();
+		 	$filename = $dr->drink_name."-".time().".".$file->getClientOriginalExtension();
 		 	$savepath = "uploads";
 
 		 	$file->move($savepath, $filename);
 
+		 	$photo = new DrinkPhoto;
+			$photo->filename = $filename;
+			$photo->drink_id = $dr->id;
+			$photo->save();
+
+
 		 }
 
+ 		
+
 
 		 
-		 
-		 // Save the drink
-		 $dr->save();
 		 
 		 // save the ingredients associated with the drink
 		 $dr->ingredients()->attach($ingr_data);

@@ -21,6 +21,11 @@ class Drink extends Model {
 
     }
 
+    public function photos(){
+
+        $this->hasMany('App\DrinkPhoto','id','drink_id');
+    }
+
     /*
     *   Get a lisk of unique glasses   
     *
