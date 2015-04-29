@@ -133,7 +133,7 @@ class AdminController extends Controller {
 		$data['page_title'] = "Edit: ".$drink->drink_name;
 		$data['drink']		= $drink;
 		$data['glasses'] 	= $drink->getUniqueGlasses();
-		$data['photos'] 	= $drink->photos;
+		
 
 		//print_r($data);
 		//print_r(DB::getQueryLog());

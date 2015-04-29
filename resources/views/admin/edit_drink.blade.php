@@ -21,7 +21,7 @@
 
 						<div class="col-sm-6 col-sm-offset-3">
 
-							@foreach ($photos as $photo)
+							@foreach ($drink->photos as $photo)
 							<img src="{{URL::to('/')}}/uploads/{{$photo->filename}}" width="200"> <br/>
 							<input type="button" class="btn btn-xs btn-danger" value="Remove Picture">
 							@endforeach
