@@ -88,6 +88,9 @@
 								$max_ingredients = 10; 
 								$default_count   = 5;
 
+								$actual_ingredients = count($drink->ingredients);	
+
+
 
 								for($i=1;$i<=$max_ingredients;$i++){
 
@@ -95,6 +98,20 @@
 										$class = "show-ingr";
 									else
 										$class = "hide-ingr";
+
+
+									$qty 		= "";
+									$ingr_name 	= "";
+									$ingr_id	= "";
+
+									if($i < $actual_ingredients)
+									{
+										$qty 		= $drink->ingredients[$i]['pivot']->qty;
+										$ingr_name 	= $dr 
+									}
+
+
+
 
 								 ?>	
 								<div class="row ingredient-subform <?php echo $class;?>" id="ingredient-<?php echo $i;?>">
