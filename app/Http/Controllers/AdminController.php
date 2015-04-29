@@ -7,6 +7,7 @@ use App\Ingredient;
 use App\DrinkPhoto;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class AdminController extends Controller {
@@ -88,11 +89,6 @@ class AdminController extends Controller {
 
 
 		 }
-
- 		
-
-
-		 
 		 
 		 // save the ingredients associated with the drink
 		 $dr->ingredients()->attach($ingr_data);
@@ -101,6 +97,10 @@ class AdminController extends Controller {
 
 	}
 
+	/*
+	* 	Pull the list of ingredients based on the input
+	*   @return JSON
+	*/
 
 	public function getIngredientsAjax($name){
 
@@ -117,6 +117,30 @@ class AdminController extends Controller {
 		return response()->json($json_array);
 
 	}
+
+	/*
+	* 	Show Edit Drink Page	
+	*/
+
+	public function editDrink($id){
+
+		DB::enableQueryLog();
+
+		$drink = new Drink;
+		$drink = $drink->find($id);
+
+		$data = [];
+		$data['page_title'] = "Edit: ".$drink->drink_name;
+		$data['drink']		= $drink;
+		$data['glasses'] 	= $drink->getUniqueGlasses();
+		$data['photos'] 	= $drink->photos;
+
+		//print_r($data);
+		//print_r(DB::getQueryLog());
+		return view('admin/edit_drink', $data);
+
+	}
+
 
 	public function register(){
 		return view('auth.register');

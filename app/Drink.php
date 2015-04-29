@@ -23,7 +23,7 @@ class Drink extends Model {
 
     public function photos(){
 
-        $this->hasMany('App\DrinkPhoto','id','drink_id');
+        return $this->hasMany('App\DrinkPhoto');
     }
 
     /*

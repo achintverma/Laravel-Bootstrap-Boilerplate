@@ -9,7 +9,7 @@ class DrinkPhoto extends Model {
 
 	function drink(){
 
-			$this->belongsTo("App\Drink",'id','drink_id');
+			return $this->belongsTo("App\Drink");
 
 	}
 
