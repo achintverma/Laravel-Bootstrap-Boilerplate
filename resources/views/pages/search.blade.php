@@ -20,11 +20,34 @@
 					foreach($drinks as $drink) { 
 					?>
 					<div class="col-md-4 drink-box">
-						<img src="{{URL::to('/')}}/images/drink-default.png" class="animated pulse">
-						
-						<h3><?php echo $drink->drink_name; ?></h3>
-						<p><?php echo $drink->rating; ?> voted by <?php echo $drink->total_votes; ?></p>	
 
+						
+						<?php if(count($drink->photos) > 0){ 
+						?>
+						@foreach ($drink->photos as $photo)
+							<img src="{{URL::to('/')}}/uploads/{{$photo->filename}}" width="200"> <br/>
+							
+						@endforeach
+						<?php 
+						}else {
+						?>
+
+						<img src="{{URL::to('/')}}/images/drink-default.png" class="animated pulse">
+
+						<?php 
+						}
+						?>
+						
+						<a href="{{URL::to('/')}}/drink/{{$drink->id}}"><h3>{{ $drink->drink_name }}</h3></a>
+
+						<?php 
+						if($drink->rating != "")
+						{
+						?>
+						<p><?php echo $drink->rating; ?> voted by <?php echo $drink->votes; ?></p>	
+						<?php 
+						}
+						?>
 						<!-- <p><?php echo substr($drink->description, 0, 100); ?> <?php if(strlen($drink->description) > 100) echo "...";?> </p> -->
 
 						<?php foreach($drink->ingredients as $ingredient)

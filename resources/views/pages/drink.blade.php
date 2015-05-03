@@ -7,7 +7,21 @@
 		<div class="col-md-8">
 			
 			<div class="drink-image">
-				<img src="http://dummyimage.com/600x400/ccc/fff&text=" width="100%" title="<?php echo $drink->drink_name;?>" alt="<?php echo $drink->drink_name;?>">
+				<?php if(count($drink->photos) > 0)
+				{ 
+						?>
+						@foreach ($drink->photos as $photo)
+							<img src="{{URL::to('/')}}/uploads/{{$photo->filename}}" width="600"> <br/>
+							
+						@endforeach
+							<?php 
+						}else {
+							?>
+							<img src="http://dummyimage.com/600x400/ccc/fff&text=" width="100%" title="<?php echo $drink->drink_name;?>" alt="<?php echo $drink->drink_name;?>">
+							<?php 
+				}
+						?>
+
 				<h1><?php echo $drink->drink_name;?></h1>
 			</div>
 

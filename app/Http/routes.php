@@ -29,6 +29,8 @@ Route::get('register',"PagesController@register");
 
 Route::get('drink/{slug}','DrinksController@getDrink')->where(['slug'=>'[a-z-]+']);
 
+Route::get('drink/{id}', 'DrinksController@getDrinkById')->where(['id'=>'[0-9]+']);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
