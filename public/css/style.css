@@ -66,3 +66,14 @@
 	font-size: 18px;
 	color:#72cf01;
 }
+
+#footer{
+
+	margin-top: 30px;
+	padding-top: 30px;
+	border-top: 1px solid #eee;
+}
+
+#footer span.copy{
+	color:#999;
+}

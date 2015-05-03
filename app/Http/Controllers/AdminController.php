@@ -22,8 +22,9 @@ class AdminController extends Controller {
 		$drinks = $db->getAllDrinks();
 		$data 	= array('drinks' => $drinks, 'page_title' => "Cocktails");
 
-		return view('pages.about', $data);
+		return view('admin.main', $data);
 	}
+	
 
 	/*
 	*  Show a page to add a new cocktail

@@ -11,13 +11,13 @@
 				{ 
 						?>
 						@foreach ($drink->photos as $photo)
-							<img src="{{URL::to('/')}}/uploads/{{$photo->filename}}" width="600"> <br/>
+							<img src="{{URL::to('/')}}/uploads/{{$photo->filename}}" width="750"> <br/>
 							
 						@endforeach
 							<?php 
 						}else {
 							?>
-							<img src="http://dummyimage.com/600x400/ccc/fff&text=" width="100%" title="<?php echo $drink->drink_name;?>" alt="<?php echo $drink->drink_name;?>">
+							<img src="http://dummyimage.com/750x400/ccc/fff&text=" width="100%" title="<?php echo $drink->drink_name;?>" alt="<?php echo $drink->drink_name;?>">
 							<?php 
 				}
 						?>
