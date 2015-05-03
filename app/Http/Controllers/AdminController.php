@@ -24,7 +24,19 @@ class AdminController extends Controller {
 
 		return view('admin.main', $data);
 	}
-	
+
+	/*
+	*	Show the list of all ingredients 
+	*/
+
+	public function getIngredients(){
+
+		$db 	= new Ingredient;
+		$ingredients = $db->getAllIngredients();
+		$data 	= array('ingredients' => $ingredients, 'page_title' => "Ingredients");
+
+		return view('admin.ingredients', $data);
+	}
 
 	/*
 	*  Show a page to add a new cocktail

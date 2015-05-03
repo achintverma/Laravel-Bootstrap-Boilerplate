@@ -21,6 +21,18 @@ class Ingredient extends Model {
 
 
 	/*
+	*	Get all ingredients wih pagination. This function is used in admin panel
+	*/
+
+	public function getAllIngredients(){
+
+		$ingredients 	= Ingredient::paginate(50);
+		return $ingredients;
+	}
+
+
+
+	/*
 	* Function to delete ingredient
 	**/
 
