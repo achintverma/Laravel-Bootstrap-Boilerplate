@@ -28,6 +28,7 @@
 		<table class="table table-striped">
         
         <tr>
+            <th><input type="checkbox" onclick="select_all();"></th>
             <th>Ingredient Name</th>
             <!-- <th>Description</th> -->
             <th>Type</th>
@@ -38,7 +39,8 @@
 
         <?php foreach ($ingredients as $ingredient): ?>
         <tr>
-    		<td><input type="checkbox"> <?php echo $ingredient->ingredient; ?></td>
+    		<td><input type="checkbox" name="ingr-<?php echo $ingredient->id;?>"></td>
+            <td> <?php echo $ingredient->ingredient; ?></td>
             <!-- <td><?php echo substr($ingredient->description,0,100); ?></td> -->
             <td><?php echo $ingredient->type; ?></td>
            
