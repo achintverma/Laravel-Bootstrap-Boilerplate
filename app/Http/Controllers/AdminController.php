@@ -5,10 +5,12 @@ use App\Http\Controllers\Controller;
 use App\Drink;
 use App\Ingredient;
 use App\DrinkPhoto;
+use App\IngredientType;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Input;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller {
 
@@ -151,6 +153,38 @@ class AdminController extends Controller {
 		//print_r($data);
 		//print_r(DB::getQueryLog());
 		return view('admin/edit_drink', $data);
+
+	}
+
+
+	/*
+	* 	Save ingredient_type with list of ingredients 
+	*/
+
+	public function saveIngredientType(){
+
+		
+		// add a new ingredient type in database 
+		$ingr = new IngredientType();
+		$ingr->type = Request::input('ingredient_type');
+		$ingr->save();
+
+		// update the ingredients table to link them with this ingredient type 
+
+		for($i = 1; $i < 50; $i++ ){
+
+			if(Input::has("ingredient-".$i)){
+				 $ingr_item = Request::input('ingredient-'.$i);
+				 $ingredient = Ingredient::find($ingr_item);
+
+				 $ingredient->ingredient_type()->associate($ingr);
+				 $ingredient->save();
+			}
+
+		}
+
+		return redirect()->back();
+
 
 	}
 

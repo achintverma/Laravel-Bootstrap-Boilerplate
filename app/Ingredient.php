@@ -18,7 +18,7 @@ class Ingredient extends Model {
 
 	public function ingredient_type(){
 
-		$this->belongsTo('App\IngredientType');
+		return $this->belongsTo('App\IngredientType');
 
 	}
 

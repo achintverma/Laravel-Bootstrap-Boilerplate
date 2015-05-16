@@ -12,8 +12,8 @@
 
             <ul class="nav nav-pills" role="tablist">
               <li role="presentation" class="active"><a href="#">Cocktails <span class="badge">{{ $drinks->total()}}</span></a></li>
-              <li role="presentation"><a href="#">Ingredients</a></li>
-              <li role="presentation"><a href="#">Messages <span class="badge">3</span></a></li>
+              <li role="presentation"><a href="{{URL::to('/admin/ingredients')}}">Ingredients</a></li>
+              <li role="presentation"><a href="{{URL::to('/admin/ingredient_categories')}}">Messages <span class="badge">3</span></a></li>
             </ul>
 
         </div>

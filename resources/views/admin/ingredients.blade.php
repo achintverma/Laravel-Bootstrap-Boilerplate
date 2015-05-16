@@ -11,9 +11,9 @@
         <div class="col-md-8">
 
             <ul class="nav nav-pills" role="tablist">
-              <li role="presentation"><a href="#">Cocktails</a></li>
+              <li role="presentation"><a href="{{URL::to('/admin')}}">Cocktails</a></li>
               <li role="presentation" class="active"><a href="#">Ingredients <span class="badge">{{ $ingredients->total()}}</span></a></li>
-              <li role="presentation"><a href="#">Ingredient Categories</a></li>
+              <li role="presentation"><a href="{{URL::to('/admin/ingredient_categories')}}">Ingredient Categories</a></li>
             </ul>
 
         </div>
@@ -25,6 +25,8 @@
     <br/>
     <div class="row">
 
+        <form class="form-inline" action="{{URL::to('/admin/ingredient_type/add')}}" method="post">
+            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 		<table class="table table-striped">
         
         <tr>
@@ -37,12 +39,14 @@
 
         </tr>    
 
-        <?php foreach ($ingredients as $ingredient): ?>
+        <?php 
+        $counter = 1; 
+        foreach ($ingredients as $ingredient): ?>
         <tr>
-    		<td><input type="checkbox" name="ingr-<?php echo $ingredient->id;?>"></td>
+    		<td><input type="checkbox" name="ingredient-<?php echo $counter; $counter++;?>" value="<?php echo $ingredient->id;?>"></td>
             <td> <?php echo $ingredient->ingredient; ?></td>
             <!-- <td><?php echo substr($ingredient->description,0,100); ?></td> -->
-            <td><?php echo $ingredient->type; ?></td>
+            <td><?php echo $ingredient->ingredient_type['type'];?></td>
            
             <td><?php if(strtotime($ingredient->updated_at) != -62169984000) echo date("D m, Y", strtotime($ingredient->updated_at)); else echo "Never Updated";?></td>
     		<td> 
@@ -56,10 +60,26 @@
     
     </div>
         
+    <div class="row">
+        <div class="col-md-6">
+            <?php echo $ingredients->render(); ?>
+        </div>
+        <div class="col-md-6">
+            
+                <label>Ingredient Category</label>
+                <input class="form-control" name="ingredient_type">
+                <input type="submit" value="Save" class="btn btn-success">
+            </form>
+        </div>
+    </div>
+
+
 	</div>
 
 
-	<?php echo $ingredients->render(); ?>
+	
+
+
 
 
 	

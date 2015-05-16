@@ -15,10 +15,10 @@
 // admin routes 
 Route::get('admin/', 'AdminController@index');
 Route::get('admin/ingredients', 'AdminController@getIngredients');
-
 Route::get('admin/drink/new', 'AdminController@addDrink');
-
 Route::post('admin/drink/add', 'AdminController@createDrink');
+Route::post('admin/ingredient_type/add', 'AdminController@saveIngredientType');
+
 
 Route::get('admin/drink/{id}', 'AdminController@getDrinkDetail');
 Route::get('admin/drink/{id}/edit', 'AdminController@editDrink');
