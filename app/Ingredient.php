@@ -13,6 +13,17 @@ class Ingredient extends Model {
 
 	}
 
+
+	// define a relationship with ingedient types 
+
+	public function ingredient_type(){
+
+		$this->belongsTo('App\IngredientType');
+
+	}
+
+
+
 	public function getIngredientByName($name){
 
 		return Ingredient::where('ingredient','LIKE','%'.$name.'%')->take(10)->get(['id','ingredient']);
