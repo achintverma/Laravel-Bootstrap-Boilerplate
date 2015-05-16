@@ -65,15 +65,32 @@
             <?php echo $ingredients->render(); ?>
         </div>
         <div class="col-md-6">
+                
+
+                
+                
+                
+                
+                
             
-                <label>Ingredient Category</label>
-                <input class="form-control" name="ingredient_type">
-                <input type="submit" value="Save" class="btn btn-success">
-            </form>
         </div>
     </div>
 
+    <div class="row">
+                    
+                    <div class="col-sm-3"><input class="form-control" name="ingredient_type" placeholder="Enter a New Type"></div>
+                    <div class="col-sm-3">
+                        <select name="existing_ingredient" class="form-control">
+                        <option value="0">Assign to Existing Type</option>
+                        @foreach($ingredient_types as $i_type)
+                        <option value="{{$i_type->id}}">{{$i_type->type}}</option>
+                        @endforeach
 
+                </select></div>
+                    <div class="col-sm-3"><input type="submit" value="Save" class="btn btn-success"></div>
+                </div>
+
+    </form>
 	</div>
 
 

@@ -35,7 +35,11 @@ class AdminController extends Controller {
 
 		$db 	= new Ingredient;
 		$ingredients = $db->getAllIngredients();
-		$data 	= array('ingredients' => $ingredients, 'page_title' => "Ingredients");
+
+		$db     = new IngredientType;
+		$ingredient_types = $db->getAllIngredientTypes();
+
+		$data 	= array('ingredients' => $ingredients, 'page_title' => "Ingredients", 'ingredient_types' => $ingredient_types);
 
 		return view('admin.ingredients', $data);
 	}
@@ -163,16 +167,23 @@ class AdminController extends Controller {
 
 	public function saveIngredientType(){
 
-		
-		// add a new ingredient type in database 
-		$ingr = new IngredientType();
-		$ingr->type = Request::input('ingredient_type');
-		$ingr->save();
 
+		if(Request::input('existing_ingredient') == 0)
+		{
+
+			// add a new ingredient type in database 
+			$ingr = new IngredientType();
+			$ingr->type = Request::input('ingredient_type');
+			$ingr->save();
+			
+		}
+		else
+		$ingr = IngredientType::find(Request::input('existing_ingredient'));	
 		// update the ingredients table to link them with this ingredient type 
 
 		for($i = 1; $i < 50; $i++ ){
 
+			// skip if the checkbox was not selected 
 			if(Input::has("ingredient-".$i)){
 				 $ingr_item = Request::input('ingredient-'.$i);
 				 $ingredient = Ingredient::find($ingr_item);

@@ -7,11 +7,16 @@ class IngredientType extends Model {
 	//
 	protected $table = "ingredient_types";
 
-	function ingredients(){
+	public function ingredients(){
 
 			return $this->hasMany("App\Ingredient");
 
 	}
 
+	public function getAllIngredientTypes(){
+
+		return IngredientType::orderBy('type','desc')->get();
+
+	}
 
 }
