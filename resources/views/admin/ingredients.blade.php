@@ -42,13 +42,13 @@
         <?php 
         $counter = 1; 
         foreach ($ingredients as $ingredient): ?>
-        <tr>
+        <tr @if($ingredient->ingredient_type['type'] != "") class="success" @endif>
     		<td><input type="checkbox" name="ingredient-<?php echo $counter; $counter++;?>" value="<?php echo $ingredient->id;?>"></td>
             <td> <?php echo $ingredient->ingredient; ?></td>
             <!-- <td><?php echo substr($ingredient->description,0,100); ?></td> -->
             <td><?php echo $ingredient->ingredient_type['type'];?></td>
            
-            <td><?php if(strtotime($ingredient->updated_at) != -62169984000) echo date("D m, Y", strtotime($ingredient->updated_at)); else echo "Never Updated";?></td>
+            <td><?php if(strtotime($ingredient->updated_at) != -62169984000) echo date("D, M d, Y", strtotime($ingredient->updated_at)); else echo "Never Updated";?></td>
     		<td> 
                 <a href="" class="btn btn-default btn-xs">Edit</a>
                 <a href="" class="btn btn-default btn-xs">Delete</a>

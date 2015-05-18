@@ -13,25 +13,41 @@
 
 
 // admin routes 
-Route::get('admin/', 'AdminController@index');
-Route::get('admin/ingredients', 'AdminController@getIngredients');
-Route::get('admin/drink/new', 'AdminController@addDrink');
-Route::post('admin/drink/add', 'AdminController@createDrink');
-Route::post('admin/ingredient_type/add', 'AdminController@saveIngredientType');
+
+Route::get('/admin/', 'AdminController@login');
+Route::post('/admin/authorize', 'AdminController@authorize');
 
 
-Route::get('admin/drink/{id}', 'AdminController@getDrinkDetail');
-Route::get('admin/drink/{id}/edit', 'AdminController@editDrink');
-Route::get('get-ingredients/{name}', 'AdminController@getIngredientsAjax');
+// all pages in this group require admin login
+Route::group(['middleware' => ['auth']], function(){
+
+	Route::get('/admin/cocktails', 'AdminController@index');
+	Route::get('/admin/ingredients', 'AdminController@getIngredients');
+	Route::get('/admin/ingredient_categories', 'AdminController@getIngredientTypes');
+	Route::get('/admin/drink/new', 'AdminController@addDrink');
+	Route::post('/admin/drink/add', 'AdminController@createDrink');
+	Route::post('/admin/ingredient_type/add', 'AdminController@saveIngredientType');
 
 
-Route::get('search/{id?}','DrinksController@search');
+	Route::get('/admin/drink/{id}', 'AdminController@getDrinkDetail');
+	Route::get('/admin/drink/{id}/edit', 'AdminController@editDrink');
+	Route::get('/get-ingredients/{name}', 'AdminController@getIngredientsAjax');
 
-Route::get('register',"PagesController@register");
+});
 
-Route::get('drink/{slug}','DrinksController@getDrink')->where(['slug'=>'[a-z-]+']);
+Route::get('/auth/login', function(){
 
-Route::get('drink/{id}', 'DrinksController@getDrinkById')->where(['id'=>'[0-9]+']);
+	return redirect('/admin/');
+
+});
+
+Route::get('/{id?}','DrinksController@search');
+
+Route::get('/register',"PagesController@register");
+
+Route::get('/drink/{slug}','DrinksController@getDrink')->where(['slug'=>'[a-z-]+']);
+
+Route::get('/drink/{id}', 'DrinksController@getDrinkById')->where(['id'=>'[0-9]+']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

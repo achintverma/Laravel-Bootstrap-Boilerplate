@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\RedirectResponse;
-
+use Auth;
 class AdminController extends Controller {
 
 	/*
@@ -162,6 +162,24 @@ class AdminController extends Controller {
 
 
 	/*
+	*	Get list if ingredient types 
+	*/
+
+	public function getIngredientTypes(){
+
+		$db = new IngredientType;
+		$ingr_types = $db->getAllIngredientTypesByPage();
+
+		$data = [];
+		$data['page_title'] = "Ingredient Types";
+		$data['ingredient_types'] = $ingr_types;
+
+		return view('admin/ingredient_types', $data);
+
+
+	}
+
+	/*
 	* 	Save ingredient_type with list of ingredients 
 	*/
 
@@ -181,7 +199,7 @@ class AdminController extends Controller {
 		$ingr = IngredientType::find(Request::input('existing_ingredient'));	
 		// update the ingredients table to link them with this ingredient type 
 
-		for($i = 1; $i < 50; $i++ ){
+		for($i = 1; $i <= 50; $i++ ){
 
 			// skip if the checkbox was not selected 
 			if(Input::has("ingredient-".$i)){
@@ -200,8 +218,23 @@ class AdminController extends Controller {
 	}
 
 
-	public function register(){
-		return view('auth.register');
+	public function login(){
+		return view('auth.login', array("page_title"=>"Login"));
+	}
+
+	public function authorize(){
+
+		$email = Request::input('email');
+		$password = Request::input('password');
+
+		if (Auth::attempt(['email' => $email, 'password' => $password, 'type'=> 1]))
+        {
+            return redirect()->intended('/admin/cocktails');
+        }
+        else
+        	return redirect('/admin/')->with('message', 'Incorrect Email or Password');;
+
+
 	}
 
 

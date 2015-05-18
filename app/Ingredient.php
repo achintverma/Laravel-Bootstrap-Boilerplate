@@ -38,6 +38,7 @@ class Ingredient extends Model {
 	public function getAllIngredients(){
 
 		$ingredients 	= Ingredient::orderBy('ingredient','asc')->paginate(50);
+		$ingredients->setPath("ingredients");
 		return $ingredients;
 	}
 

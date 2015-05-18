@@ -19,4 +19,13 @@ class IngredientType extends Model {
 
 	}
 
+	public function getAllIngredientTypesByPage(){
+
+		$ingredient_types =  IngredientType::with('ingredients')->get();
+		
+
+		return $ingredient_types;
+
+	}
+
 }
